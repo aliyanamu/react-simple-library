@@ -116,11 +116,13 @@ const Books: React.FC<BooksProps> = ({ books, size }) => {
     const items = JSON.parse(localStorage.getItem("bookmarks") as string);
     items && setBookmarks(items);
     getAllBooks(items);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setCount(Math.ceil(filteredBooks.length / size));
     setPageChunk(sliceBook(page - 1));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredBooks, page]);
 
   return (

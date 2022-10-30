@@ -55,10 +55,12 @@ const Directory: React.FC = () => {
     if (hasOnceRendered.current) return;
     hasOnceRendered.current = true;
     fetchCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     categoryId && fetchBooks({ categoryId });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryId]);
 
   return (
