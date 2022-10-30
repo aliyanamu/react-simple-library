@@ -17,5 +17,5 @@
     "baseUrl": "./src",
     "strictPropertyInitialization": false
   },
-  "include": ["src"]
+  "include": ["src", "src/declaration.d.ts"]
 }
