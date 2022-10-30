@@ -16,17 +16,20 @@ const ellipsisStyle = {
 
 export type BookType = {
   id: string;
+  category_id: string;
   cover_url: string;
   title: string;
   authors: string[];
   description: string;
+  isBookmarked?: boolean;
 };
 
 type BookProps = {
   book: BookType;
+  toggleBookmark: (book: BookType) => void;
 };
 
-const Book: React.FC<BookProps> = ({ book }) => {
+const Book: React.FC<BookProps> = ({ book, toggleBookmark }) => {
   return (
     <Card sx={{ width: 280 }}>
       <CardMedia
@@ -53,7 +56,7 @@ const Book: React.FC<BookProps> = ({ book }) => {
             WebkitLineClamp: "1",
           }}
         >
-          {book.authors}
+          {book.authors.join(", ")}
         </Typography>
         <Typography
           variant="body2"
@@ -67,8 +70,12 @@ const Book: React.FC<BookProps> = ({ book }) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to bookmark">
-          <BookmarkIcon />
+        <IconButton
+          aria-label="add to bookmark"
+          onClick={() => toggleBookmark(book)}
+          sx={{ color: "#C9C9C9" }}
+        >
+          <BookmarkIcon color={book.isBookmarked ? "primary" : "inherit"} />
         </IconButton>
       </CardActions>
     </Card>
